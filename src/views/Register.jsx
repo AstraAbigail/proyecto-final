@@ -1,6 +1,13 @@
-const Register = () =>{ 
+
+import { Layout } from "../components/Layout"
+
+const Register = () => { 
   return (
-    <h1>Register</h1>
+
+    <Layout>
+      <h1>Register</h1>
+    </Layout>
+   
 )
 
 }

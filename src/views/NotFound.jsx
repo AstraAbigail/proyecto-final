@@ -1,6 +1,11 @@
-const NotFound = () =>{ 
+import { Layout } from "../components/Layout"
+
+const NotFound = () => { 
   return (
-    <h1>NotFound</h1>
+    <Layout>
+     <h1>NotFound</h1>
+    </Layout>
+   
 )
 
 }

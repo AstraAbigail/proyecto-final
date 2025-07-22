@@ -1,6 +1,11 @@
-const Dashboard = () =>{ 
+import { Layout } from "../components/Layout"
+
+const Dashboard = () => { 
   return (
-    <h1>Dashboard</h1>
+    <Layout>
+      <h1>Dashboard</h1>
+    </Layout>
+   
 )
 
 }
