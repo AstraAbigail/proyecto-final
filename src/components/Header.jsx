@@ -7,10 +7,11 @@ const Header = () => {
         <img src="" alt="" />
         <nav>
           <ul>
-            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/register">Registrarse</Link></li>
-            <li><Link to="/dashboard">Dashboard</Link></li>         
+            <li><Link to="/dashboard">Dashboard</Link></li>
+            <button>Cerrar sesión</button>
           </ul>
         </nav>
       </header>
