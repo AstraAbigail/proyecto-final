@@ -13,7 +13,7 @@ const RouterApp = () => {
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/notfound" element={<NotFound/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
   )
