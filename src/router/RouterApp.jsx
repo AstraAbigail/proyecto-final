@@ -13,7 +13,8 @@ const RouterApp = () => {
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="*" element={<NotFound/>}/>
+        {/* "* toda pagina que no conozca, redirije a NF */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
