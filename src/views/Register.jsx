@@ -77,12 +77,10 @@ const Register = () => {
     //limpio los input, volviendolos a su valor por defecto.
     reset()
     //delay
-    setTimeout(() => {
+    /*setTimeout(() => {
       setSuccess("")
     }, 5000); // 5000 ms = 5 segundos
-   
-
-    
+    */    
   }
   return (
     <Layout>

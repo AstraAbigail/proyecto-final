@@ -26,11 +26,7 @@ const Login = () => {
 
     //limpio los input, volviendolos a su valor por defecto.
     reset()
-    //delay
-    /*setTimeout(() => {
-      setSuccess("")
-    }, 5000); // 5000 ms = 5 segundos
-    */    
+   
   }
 
   return (    
