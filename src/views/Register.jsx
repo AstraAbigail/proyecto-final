@@ -18,14 +18,7 @@ const Register = () => {
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm({
-    //valores por defecto de los input
-    defaultValues: {
-      username:(""),
-      email: (""),
-      password:("")
-    }
-  })
+  } = useForm()
   
 
   /*evento del form*/

@@ -1,25 +1,63 @@
 import { useState } from "react"
 import { Layout } from "../components/Layout"
+import { useForm } from "react-hook-form"
+
 
 const Dashboard = () => {
-  const [name, setName] = useState()
-  const [price, setPrice] = useState()
-  const [description, setDescription] = useState()
+  const [name, setName] = useState("")
+  // const [price, setPrice] = useState()
+  // const [description, setDescription] = useState()
+  //const [selectedImage, setSelectedImage] = useState("https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-man-profile-businessman-avatar-person-glyph-vector-illustration.jpg")
+  const [product, setProduct] = useState(null)
+  const [fileUrl,setFileUrl] = useState("https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-man-profile-businessman-avatar-person-glyph-vector-illustration.jpg")
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm()
+  
+  const saveFileImage = event => { 
+    const imageFile = event.target.files[0]
+    if (imageFile) {
+      const imageURL = URL.createObjectURL(imageFile)
+      setFileUrl(imageURL)
+    } else { 
+      setFileUrl("https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-man-profile-businessman-avatar-person-glyph-vector-illustration.jpg")
+    }
+  }
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const isSubmit =  async (e) => {
+    //e.preventDefault()
 
     const newProduct = {
       id: crypto.randomUUID(),
-      name: name,
-      price: price,
-      userId: "id del cliente que hace la creación",
-      description: description
-    }
-
-    // petición al backend mediante fetch -> método POST https://fakeproductapi.com/products
+      title: e.title,
+      price: e.price,
+      description: e.description,
+      category: e.category,
+      image:e.image
+    }  
     console.log(newProduct)
+
+    const response = await fetch("https://fakestoreapi.com/products", {
+      method: "POST",
+      //informacion contestual de la peticion, informacion meta
+      headers: {
+        "Content-Type":"application/json"
+      },
+      //informacion dura 
+      body: JSON.stringify(newProduct)      
+    })
+
+    const data = await response.json()
+
+    setProduct(data)
+    //limpio los imput 
+    reset()
+    setFileUrl("https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-man-profile-businessman-avatar-person-glyph-vector-illustration.jpg")
+
+
   }
 
   return (
@@ -28,24 +66,112 @@ const Dashboard = () => {
 
       <section>
         <h2>Cargar nuevo producto</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(isSubmit)}>         
           <div>
-            <label>Nombre del producto:</label>
-            <input type="text" name="nombre" onChange={(e) => setName(e.target.value)} />
+            <input
+              type="text"
+              placeholder="Nombre del producto"
+              {...register("title",
+                {
+                  required:
+                  {
+                    value: true,
+                    message: "Este campo es obligatorio",
+                  },
+                  minLength:
+                  {
+                    value: 3,
+                    message: "Mínimo de 3 carácteres",
+                  }
+                }
+              )}
+            />
           </div>
-
+          <p>{errors.title?.message}</p>
           <div>
-            <label>Precio:</label>
-            <input type="number" name="precio" onChange={(e) => setPrice(e.target.value)} />
+            <input
+              type="number"
+              placeholder="Precio"
+              {...register("price",
+                {
+                  required:
+                  {
+                    value: true,
+                    message: "Este campo es obligatorio",
+                  }                 
+                }
+              )}
+            />
           </div>
-
+          <p>{errors.price?.message}</p>       
           <div>
-            <label>Descripción:</label>
-            <textarea name="descripcion" rows="4" onChange={(e) => setDescription(e.target.value)} />
+            <textarea
+              type="text"
+              placeholder="Descripcion"
+              rows="4"
+              {...register("description",
+                {
+                  required:
+                  {
+                    value: true,
+                    message: "Este campo es obligatorio",
+                  },
+                  maxLength: {
+                    value: 25,
+                    message:"Maximo 25 carácteres"
+                  }
+                }
+              )}
+            />
           </div>
-
+          <p>{errors.description?.message}</p>           
+          <div>
+            <input
+              type="text"
+              placeholder="Categoria"
+              {...register("category",
+                {
+                  required:
+                  {
+                    value: true,
+                    message: "Este campo es obligatorio",
+                  },
+                  maxLength: {
+                    value: 25,
+                    message:"Maximo 25 carácteres"
+                  }
+                }
+              )}
+            />
+          </div>
+          <p>{errors.category?.message}</p>     
+          <div>
+            <img src={fileUrl} width="150" alt="avatar" id="img" />
+            <input
+              {...register("image")}
+              type="file"
+              name="foto"
+              id="foto"
+              accept="image/*"
+              onChange={saveFileImage}              
+              required
+            />          
+          </div>
           <button>Guardar producto</button>
         </form>
+       
+        {
+          product && <div>
+           
+            <h3>Producto Agregado</h3>
+            <h3>Titulo:{product.title}</h3>            
+            <p>$: {product.price}</p>            
+            <p>Descripción:{product.description}</p>            
+            <p>Categotia:{product.category}</p>
+            <img src={product.image}/>
+        </div>
+        }
+
       </section>
     </Layout>
   )

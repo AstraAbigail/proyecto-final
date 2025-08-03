@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
 const Header = () => { 
-  const [user, setUser] = useState(true)
+  const [user, setUser] = useState()
   
   return (
 
