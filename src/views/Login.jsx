@@ -1,9 +1,11 @@
 import { Layout } from "../components/Layout.jsx"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
+import { useAuth } from "../context/UserContext.jsx"
 
 const Login = () => {
-  
+  const { login} = useAuth()
+
   const [success, setSuccess] = useState("")
   const {
     register,
@@ -18,7 +20,10 @@ const Login = () => {
     }
   })
 
+  
   const isSubmit = (data) => {
+    
+    login()
        
     console.log(data, ("<- Usuario"))
     //Mesnaje de exito
@@ -26,7 +31,7 @@ const Login = () => {
 
     //limpio los input, volviendolos a su valor por defecto.
     reset()
-   
+  
   }
 
   return (    
