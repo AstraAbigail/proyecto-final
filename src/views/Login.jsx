@@ -63,8 +63,9 @@ const Login = () => {
                     },
                     pattern: {
                       //al menos minuscula, numero,caracter especial, esten todos los anteriores
-                      value:/^(?=.*[a-z])(?=.*\d)(?=.*[_\-@%$])[a-z\d_\-@%$]+$/,
-                      message:"Debe contener al menos una minuscula, un número, y un caracter especial de los siguientes (@ _ - % $)"
+                      // value:/^(?=.*[a-z])(?=.*\d)(?=.*[_\-@%$])[a-z\d_\-@%$]+$/,
+                      value:/^[a-z]+$/,
+                      message:"Debe contener al 4 letras minusculas"
                     }                  
                   }
                 )}
@@ -80,7 +81,11 @@ const Login = () => {
                     required: {
                       value: true,
                       message: "Este campo es requerido"
-                    }
+                    },
+                    minLength: {
+                      value: 6,
+                      message:"Debe contener 6 caracteres minimo"
+                    }                     
                     // },
                     // pattern: {
                     //   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
