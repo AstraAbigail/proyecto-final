@@ -6,7 +6,6 @@ import { Layout } from "../components/Layout"
 
 const Register = () => {
   /*Estados*/
-
   /*const [user, setUser] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -153,10 +152,14 @@ const Register = () => {
                     value: true,
                     message: "Este campo es requerido",
                   },
-                  pattern: {
-                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                    message: "Debe contener: 1 Carácter especial - Minúsculas - Números - 1 Mayúscula - 8 Carácteres",
-                  }
+                   minLength: {
+                      value: 6,
+                      message:"Debe contener 6 caracteres minimo"
+                  } 
+                  // pattern: {
+                  //   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
+                  //   message: "Debe contener: 1 Carácter especial - Minúsculas - Números - 1 Mayúscula - 8 Carácteres",
+                  // }
                 }
               )}
             />
