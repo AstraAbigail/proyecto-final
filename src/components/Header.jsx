@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
-import { useAuth } from "../context/UserContext"
+import { userAuth } from "../context/UserContext"
 import { useNavigate } from "react-router-dom"
 
 const Header = () => { 
   //pongo en uso el context
-  const { user, logout} = useAuth()   
+  const { user, logout} = userAuth()   
   const navigate = useNavigate()
 
   const handleLogout = () => { 

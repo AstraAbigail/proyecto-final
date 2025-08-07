@@ -48,6 +48,6 @@ const UserProvider = (props) => {
 }
 
 //Custom Hook
-const useAuth = () => useContext(UserContext)
+const userAuth = () => useContext(UserContext)
 
-export {UserProvider,useAuth }
+export {UserProvider,userAuth }

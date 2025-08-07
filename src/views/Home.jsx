@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { Layout } from "../components/Layout"
-import { useAuth } from "../context/UserContext"
+import { userAuth } from "../context/UserContext"
 
 const Home = () => {
   //[]->vacio por el map para que no tire error de que no puede leer undefined y no se va a leer en el map.
   const [products, setProducts] = useState([])
   // estado global -destructurando al user, podria usar login y logout que me lo da el objeto 
-  const { user} = useAuth()  
+  const { user} = userAuth()  
   const [productToEdit, setProductToEdit] = useState(null)
   const [showPopUp, setShowPopUp] = useState(null)
   //estados del formulario de actualizacion

@@ -1,12 +1,12 @@
 import { Layout } from "../components/Layout.jsx"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { useAuth } from "../context/UserContext.jsx"
+import { userAuth } from "../context/UserContext.jsx"
 import { useNavigate } from "react-router-dom"
 
 const Login = () => {
   
-  const { login } = useAuth()
+  const { login } = userAuth()
 
   const [success, setSuccess] = useState("")
   const {
@@ -61,15 +61,16 @@ const Login = () => {
                       value: 4,
                       message:"Debe tener 4 carácteres como mínimo."
                     },
-                    pattern:{
-                      value:/^[a-z0-9]/,
-                      message:"Debe contener  letras y números"
+                    pattern: {
+                      //al menos minuscula, numero,caracter especial, esten todos los anteriores
+                      value:/^(?=.*[a-z])(?=.*\d)(?=.*[_\-@%$])[a-z\d_\-@%$]+$/,
+                      message:"Debe contener al menos una minuscula, un número, y un caracter especial de los siguientes (@ _ - % $)"
                     }                  
                   }
                 )}
               />
             </div>
-            <p>{errors.email?.message}</p>
+            <p style={{color:"red"}}>{errors.username?.message}</p>
             <div>
               <input
                 type="password"
@@ -89,7 +90,7 @@ const Login = () => {
                 )}
               />
             </div>
-            <p>{errors.password?.message}</p>
+            <p style={{color:"red"}}>{errors.password?.message}</p>
             <button>Ingresar</button>
           </form>            
           {success && <p style={{ color: "green" }}>{success}</p>}      

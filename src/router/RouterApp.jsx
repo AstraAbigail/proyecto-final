@@ -4,6 +4,7 @@ import { Register } from "../views/Register.jsx"
 import { Home } from "../views/Home.jsx"
 import { Dashboard } from "../views/Dashboard.jsx"
 import { NotFound } from "../views/NotFound.jsx"
+import { PrivateRoute} from "../components/PrivateRoute.jsx"
 
 const RouterApp = () => { 
   return (
