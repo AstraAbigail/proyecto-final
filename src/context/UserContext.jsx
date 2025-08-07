@@ -10,13 +10,30 @@ const UserContext = createContext()
 
 const UserProvider = (props) => {
   const [user, setUser] = useState(null)
+  
+  const login = async (username, password) => {
+    
+    // console.log(username,password, "<- usuario y password en el login ")
+  
+      const response = await fetch("https://fakestoreapi.com/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      })
 
-  const login = () => {
-    setUser(true)
+      if (response.ok) {
+        const token = await response.json()
+        setUser(true)
+        return token
+      } else { 
+        return false
+      }
+   
+   
   }
 
   const logout = () => {
-    setUser(null)
+    return setUser(null)    
   }
   //props.children es para englobar toda la app con este proveedor.
   return (

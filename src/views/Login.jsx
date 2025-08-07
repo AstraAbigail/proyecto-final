@@ -2,9 +2,11 @@ import { Layout } from "../components/Layout.jsx"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { useAuth } from "../context/UserContext.jsx"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
-  const { login} = useAuth()
+  
+  const { login } = useAuth()
 
   const [success, setSuccess] = useState("")
   const {
@@ -15,22 +17,29 @@ const Login = () => {
   } = useForm({
     //valores por defecto de los input
     defaultValues: {
-      email: (""),
-      password: ("")
+      username: "",
+      password: ""
     }
   })
 
+  const navigate = useNavigate()
   
-  const isSubmit = (data) => {
+  const isSubmit = async (data) => {
     
-    login()
-       
-    console.log(data, ("<- Usuario"))
-    //Mesnaje de exito
-    setSuccess("Ingresando...")
+    const isLogin = await login(data.username,data.password)       
+   
 
-    //limpio los input, volviendolos a su valor por defecto.
-    reset()
+    if (isLogin) {
+      console.log(data, ("<- Usuario"))
+      //Mesnaje de exito
+      setSuccess("Ingresando...")
+      //limpio los input, volviendolos a su valor por defecto.
+      reset()
+      //redirijo automaticamente al Home
+      navigate("/")
+    }
+    
+    
   
   }
 
@@ -41,16 +50,20 @@ const Login = () => {
           <form onSubmit={handleSubmit(isSubmit)}>
             <div>
               <input
-                type="email"
-                placeholder= "Correo"
-                {...register("email",
+                type="text"
+                placeholder="Usuario"
+                {...register("username",
                   { required: {
                       value: true,
-                      message: "Este campo es requerido",
+                      message: "Este campo es requerido"
+                  },
+                    minLength: {
+                      value: 4,
+                      message:"Debe tener 4 carácteres como mínimo."
                     },
                     pattern:{
-                      value:/^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com(\.ar)?|yahoo\.com(\.ar)?)$/,
-                      message:"Dominios admitidos:@hotmail.com / @hotmail.com.ar / @gmail.com / @yahoo.com / @yahoo.com.ar",
+                      value:/^[a-z0-9]/,
+                      message:"Debe contener  letras y números"
                     }                  
                   }
                 )}
@@ -60,17 +73,18 @@ const Login = () => {
             <div>
               <input
                 type="password"
-                placeholder="Contraseña"             
+                placeholder="Password"             
                 {...register("password",
                   {
                     required: {
                       value: true,
-                      message: "Este campo es requerido",
-                    },
-                    pattern: {
-                      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                      message: "Debe contener: 1 Carácter especial - Minúsculas - Números - 1 Mayúscula - 8 Carácteres",
+                      message: "Este campo es requerido"
                     }
+                    // },
+                    // pattern: {
+                    //   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
+                    //   message: "Debe contener: 1 Carácter especial - Minúsculas - Números - 1 Mayúscula - 8 Carácteres",
+                    // }
                   }
                 )}
               />
