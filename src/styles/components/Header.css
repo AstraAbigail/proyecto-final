@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header{
+  margin-bottom: 20px;
+  
+  display: flex;
+  justify-content: space-between;
+  
+}
+.navbar{
+  padding-right: 100px;
+  background-color:rgb(255, 255, 255)!important;
+  --bs-bg-opacity:0 !important;
+}
+
+
+
+
+header img {
+  width: 15%;
+  padding-left: 20px;
+  padding-top: 20px;
+}

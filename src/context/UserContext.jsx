@@ -27,22 +27,22 @@ const UserProvider = (props) => {
         return token
       } else { 
         return false
-      }
-   
-   
+      }  
   }
 
   const logout = () => {
     return setUser(null)    
   }
+
   //props.children es para englobar toda la app con este proveedor.
+  
   return (
     <UserContext.Provider value = {{ login, logout, user }}>
         {props.children}
       
     </UserContext.Provider>
   )
-  
+
 }
 
 //Custom Hook

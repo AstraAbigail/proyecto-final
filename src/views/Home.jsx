@@ -55,6 +55,7 @@ const Home = () => {
 
   const handleUpdate = async () => { 
     e.preventDefault()
+    
     //producto actualializado
     const updatedProduct = {
       id: productToEdit.id,
