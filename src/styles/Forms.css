@@ -1,4 +1,8 @@
-.section-login-layout{
+.message-user{
+  color:white
+}
+
+.section-form-layout{
   width: 100%;
   display: flex;
   justify-content: center;
@@ -6,17 +10,7 @@
   background-color: rgb(255, 255, 255); 
 }
 
-
-
-h3, input, button {
-  font-family:"Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-
-
-.section-login-layout-form{
+.section-form{
   margin:20px;
   padding: 10px;
   padding-top: 20px;
@@ -29,29 +23,26 @@ h3, input, button {
   -moz-box-shadow: 9px 4px 35px 4px rgba(109,106,106,0.75);
 }
 
-.section-login-layout-form h3{
+.section-form h3{
   text-align: center;
   color: white;
   margin-bottom: 40px;
 }
 
+.div-inputs{
+  padding-bottom: 10px;
+}
 
-input{
+
+.div-inputs input{
   border-radius: 4px;
   border-color:#E5E5E5;
   height: 50px;
   width: 100%;
   padding-left: 5px;
-  
-}
-.section-login-layout-form-username{
-  padding-bottom: 10px;
-}
-.section-login-layout-form-password{
-  padding-bottom: 10px;
 }
 
-.section-login-layout button{
+.div-button{
   width: 100%;
   height: 50px;
   border-radius: 4px;

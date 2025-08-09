@@ -3,7 +3,10 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { userAuth } from "../context/UserContext.jsx"
 import { useNavigate } from "react-router-dom"
-import "../styles/views/Login.css" 
+// import "../styles/views/Login.css" 
+import "../styles/Fonts.css"
+import "../styles/Forms.css"
+
 
 const Login = () => {
   
@@ -50,10 +53,10 @@ const Login = () => {
   return (    
     <>      
       <Layout>
-        <section className="section-login-layout">        
-          <form className="section-login-layout-form" onSubmit={handleSubmit(isSubmit)}>
+        <section className="section-form-layout">        
+          <form className="section-form" onSubmit={handleSubmit(isSubmit)}>
               <h3>Iniciar Sesion</h3>
-              <div className="section-login-layout-form-username">
+              <div className="div-inputs">
                 <input
                   type="text"
                   placeholder="Usuario"
@@ -76,8 +79,9 @@ const Login = () => {
                   )}
                 />
               </div>
-            <p style={{color:"white"}}>{errors.username?.message}</p>
-            <div className="section-login-layout-form-password">
+            {/* <p style={{color:"white"}}>{errors.username?.message}</p> */}
+            <p className="menssage-user">{errors.username?.message}</p> 
+            <div className="div-inputs">
               <input
                 type="password"
                 placeholder="Password"             
@@ -100,18 +104,14 @@ const Login = () => {
                 )}
               />
             </div>
-            <p style={{color:"white"}}>{errors.password?.message}</p>
-            <button>Ingresar</button>
-            {success && <p style={{ color: "white" }}>{success}</p>} 
-          </form>            
-            
+            <p className="menssage-user">{errors.password?.message}</p>
+            <button  className="div-button">Ingresar</button>
+            {success && <p className="menssage-user">{success}</p>} 
+          </form>     
         </section>
       </Layout>
-      
     </>
   )
-
-
 }
 
 

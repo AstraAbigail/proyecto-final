@@ -75,12 +75,11 @@ const Register = () => {
     */    
   }
   return (
-    <Layout>
-      <h1>Formulario de registro</h1>
-      <section>
-        
-        <form onSubmit={handleSubmit(isSubmit)}>
-          <div>
+    <Layout>      
+      <section className="section-form-layout">        
+        <form  className="section-form"  onSubmit={handleSubmit(isSubmit)}>
+          <h3>Registrarse</h3>
+          <div  className="div-inputs">
             {/*
             <input
               type="text"
@@ -109,8 +108,8 @@ const Register = () => {
               )}
             />
           </div>
-          <p>{errors.username?.message}</p>
-          <div>
+          <p className="message-user">{errors.username?.message}</p>
+          <div  className="div-inputs">
             {/*<input
               type="email"
               placeholder="Email"
@@ -134,8 +133,8 @@ const Register = () => {
               )}
             />
           </div>
-          <p>{errors.email?.message}</p>
-          <div>
+          <p className="message-user">{errors.email?.message}</p>
+          <div  className="div-inputs">
             {/*<input
               type="password"
               placeholder="Contraseña"
@@ -164,12 +163,12 @@ const Register = () => {
               )}
             />
           </div>
-          <p>{errors.password?.message}</p>
-          <button>Ingresar</button>
+          <p className="message-user">{errors.password?.message}</p>
+          <button className="div-button">Ingresar</button>
         </form>
         
         {/*{error && <p style={{ color: "red" }}>{error}</p>}*/}
-        {success && <p style={{ color: "green" }}>{success}</p>}      
+        {success && <p className="message-user">{success}</p>}      
       </section>
     </Layout>
    
