@@ -63,9 +63,9 @@ const Dashboard = () => {
   return (
     <Layout>
       <h1>Panel de Administración</h1>
-      <section>
-        <h3>Cargar nuevo producto</h3>
-        <form onSubmit={handleSubmit(isSubmit)}>         
+      <section>        
+        <form onSubmit={handleSubmit(isSubmit)}>   
+          <h3>Cargar nuevo producto</h3>
           <div>
             <input
               type="text"
@@ -86,7 +86,7 @@ const Dashboard = () => {
               )}
             />
           </div>
-          <p>{errors.title?.message}</p>
+          <p className="message-user">{errors.title?.message}</p>
           <div>
             <input
               type="number"
@@ -102,7 +102,7 @@ const Dashboard = () => {
               )}
             />
           </div>
-          <p>{errors.price?.message}</p>       
+          <p className="message-user">{errors.price?.message}</p>       
           <div>
             <textarea
               type="text"
@@ -123,7 +123,7 @@ const Dashboard = () => {
               )}
             />
           </div>
-          <p>{errors.description?.message}</p>           
+          <p className="message-user">{errors.description?.message}</p>           
           <div>
             <input
               type="text"
@@ -143,7 +143,7 @@ const Dashboard = () => {
               )}
             />
           </div>
-          <p>{errors.category?.message}</p>     
+          <p className="message-user">{errors.category?.message}</p>     
           <div>
             <img src={fileUrl} width="150" alt="avatar" id="img" />
             <input
@@ -156,12 +156,10 @@ const Dashboard = () => {
               required
             />          
           </div>
-          <button>Guardar producto</button>
-        </form>
-       
+          <button className="div-button" >Guardar producto</button>
+        </form>       
         {
-          product && <div>
-           
+          product && <div>           
             <h3>Producto Agregado</h3>
             <h3>Titulo:{product.title}</h3>            
             <p>$: {product.price}</p>            
@@ -170,7 +168,6 @@ const Dashboard = () => {
             <img src={product.image}/>
         </div>
         }
-
       </section>
     </Layout>
   )
