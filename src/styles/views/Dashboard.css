@@ -16,12 +16,13 @@
 }
 
 
-/* datos de la imagen se separen y se pongan horizontal */
+
 .form-dashboard{  
   margin:20px;
   padding: 10px;
   padding-top: 20px;
   width: 800px;
+
   border-radius: 30px;
   background-color:#384b5d;
   box-shadow: 9px 4px 35px 4px rgba(109,106,106,0.75);
@@ -44,12 +45,12 @@
   display:flex;
   justify-content:center;      
   padding-bottom: 10px;
-  background-color: aqua;
+  
 }
 
 textarea{
   resize: none;
   width: 300px; 
-  /* height: 100px; */
+  height: 100px;
   overflow:hidden;
 }
