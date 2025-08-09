@@ -6,6 +6,8 @@ import { FaTruck } from "react-icons/fa";
 import logoCamion from "../assets/truck.png"
 import logoUser from "../assets/user.png"
 import logoPrice from "../assets/price.png"
+import "../styles/Fonts.css"
+
 
 
 
@@ -109,17 +111,17 @@ const Home = () => {
       </section>
 
       <section className="home-section-caracteristicas">
-        <h2>¿Por qué elegirnos?</h2>
+        <h2 className="font">¿Por qué elegirnos?</h2>
         <ul>
           <li>
             <img src={ logoCamion} alt="camion de envios" width={100}/>
             <h3>Envíos a todo el país</h3>
-            <p>Recibí tu compra en la puerta de tu casa estés donde estés.</p>
+            <p className="font">Recibí tu compra en la puerta de tu casa estés donde estés.</p>
           </li>
           <li>    
             <img src={logoPrice } alt="circulo con signo de pesos" width={100}/>
             <h3>Pagos seguros</h3>
-            <p>Trabajamos con plataformas que garantizan tu seguridad.</p>
+            <p className="font">Trabajamos con plataformas que garantizan tu seguridad.</p>
           </li>
           
           <li>  

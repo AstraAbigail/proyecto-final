@@ -3,11 +3,19 @@
 }
 
 .home-section-caracteristicas{
-  background-color: violet;
+  margin-top: 50px;
   text-align: center;
 }
 
 .home-section-caracteristicas ul li{
   display: inline-block;
   list-style-type:none;
+  padding: 20px;
 }
+
+h2{
+  size: 20px;
+  padding-left: 50px;
+}
+
+
