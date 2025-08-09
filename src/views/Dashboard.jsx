@@ -66,93 +66,12 @@ const Dashboard = () => {
   }
 
   return (
-    <Layout>
-      <h1>Panel de Administración</h1>
-      <section className="section-form-dashboard"> 
-        <h3>Cargar nuevo producto</h3>
-        <form className="form-dashboard" onSubmit={handleSubmit(isSubmit)}>   
-          <div>
-            <div>
-              <input
-                type="text"
-                placeholder="Categoria"
-                {...register("category",
-                  {
-                    required:
-                    {
-                      value: true,
-                      message: "Este campo es obligatorio",
-                    },
-                    maxLength: {
-                      value: 25,
-                      message:"Maximo 25 carácteres"
-                    }
-                  }
-                )}
-              />
-            </div>
-            <p className="message-user">{errors.category?.message}</p>
-            <div>
-              <input
-                type="text"
-                placeholder="Nombre"
-                {...register("title",
-                  {
-                    required:
-                    {
-                      value: true,
-                      message: "Este campo es obligatorio",
-                    },
-                    minLength:
-                    {
-                      value: 3,
-                      message: "Mínimo de 3 carácteres",
-                    }
-                  }
-                )}
-              />
-            </div>
-            <p className="message-user">{errors.title?.message}</p>
-            <div>
-              <input
-                type="number"
-                placeholder="Precio"
-                {...register("price",
-                  {
-                    required:
-                    {
-                      value: true,
-                      message: "Este campo es obligatorio",
-                    }                 
-                  }
-                )}
-              />
-            </div>
-            <p className="message-user">{errors.price?.message}</p>       
-            <div>
-              <textarea
-                type="text"
-                placeholder="Descripción"
-                rows="4"
-                {...register("description",
-                  {
-                    required:
-                    {
-                      value: true,
-                      message: "Este campo es obligatorio",
-                    },
-                    maxLength: {
-                      value: 25,
-                      message:"Maximo 25 carácteres"
-                    }
-                  }
-                )}
-              />
-            </div>
-            <p className="message-user">{errors.description?.message}</p>           
-          </div>     
-          <div>
-            <img src={fileUrl} width="150" alt="avatar" id="img" />
+    <Layout>      
+      <section className="section-form-dashboard">      
+        <form className="form-dashboard" onSubmit={handleSubmit(isSubmit)}> 
+          <h3>Cargar nuevo producto</h3>
+          <div className="div-img">
+            <img src={fileUrl} width="100" alt="avatar" id="img" />
             <input
               {...register("image")}
               type="file"
@@ -163,8 +82,86 @@ const Dashboard = () => {
               required
             />          
           </div>
+          <div className="div-cat-name-price-desc">
+            <div>
+              <input className="div-cat-name-price-desc-input"
+                type="text"
+                placeholder="Categoria"
+                {...register("category",
+                  {
+                    required:
+                    {
+                      value: true,
+                      message: "*Este campo es obligatorio",
+                    },
+                    maxLength: {
+                      value: 25,
+                      message:"Máximo 25 carácteres"
+                    }
+                  }
+                )}
+              />
+            </div>
+            <p className="message-user">{errors.category?.message}</p>
+              <div>
+                <input className="div-cat-name-price-desc-input"
+                  type="text"
+                  placeholder="Nombre"
+                  {...register("title",
+                    {
+                      required:
+                      {
+                        value: true,
+                        message: "*Este campo es obligatorio",
+                      },
+                      minLength:
+                      {
+                        value: 3,
+                        message: "Mínimo de 3 carácteres",
+                      }
+                    }
+                  )}
+                />
+              </div>
+              <p className="message-user">{errors.title?.message}</p>
+              <div>
+                <input className="div-cat-name-price-desc-input"
+                  type="number"
+                  placeholder="Precio"
+                  {...register("price",
+                    {
+                      required:
+                      {
+                        value: true,
+                        message: "*Este campo es obligatorio",
+                      }                 
+                    }
+                  )}
+                />
+              </div>
+              <p className="message-user">{errors.price?.message}</p>       
+              <textarea className="div-cat-name-price-desc-input"
+                type="text"
+                placeholder="Descripción"                
+                {...register("description",
+                  {
+                    required:
+                    {
+                      value: true,
+                      message: "*Este campo es obligatorio",
+                    },
+                    maxLength: {
+                      value: 200,
+                      message:"Máximo 25 carácteres"
+                    }
+                  }
+                )}
+              />
+            <p className="message-user">{errors.description?.message}</p>  
+            <button className="div-button" >Guardar producto</button>
+          </div>     
         </form>
-        <button className="div-button" >Guardar producto</button>
+        
         {
           product && <div>           
             <h3>Producto Agregado</h3>
