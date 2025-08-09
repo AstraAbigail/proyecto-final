@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 
 const Dashboard = () => {
   const [name, setName] = useState("")
+  const [success, setSuccess] = useState("")
   // const [price, setPrice] = useState()
   // const [description, setDescription] = useState()
   //const [selectedImage, setSelectedImage] = useState("https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-man-profile-businessman-avatar-person-glyph-vector-illustration.jpg")
@@ -53,6 +54,7 @@ const Dashboard = () => {
     const data = await response.json()
 
     setProduct(data)
+    setSuccess("Guardando producto...");
     //limpio los imput 
     reset()
     setFileUrl("https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-man-profile-businessman-avatar-person-glyph-vector-illustration.jpg")
@@ -164,8 +166,9 @@ const Dashboard = () => {
             <h3>Titulo:{product.title}</h3>            
             <p>$: {product.price}</p>            
             <p>Descripción:{product.description}</p>            
-            <p>Categotia:{product.category}</p>
-            <img src={product.image}/>
+            <p>Categoia:{product.category}</p>
+            <img src={product.image} />
+            {success && <p className="message-user">{success}</p>} 
         </div>
         }
       </section>
