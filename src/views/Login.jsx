@@ -80,7 +80,7 @@ const Login = () => {
                 />
               </div>
             {/* <p style={{color:"white"}}>{errors.username?.message}</p> */}
-            <p className="menssage-user">{errors.username?.message}</p> 
+            <p className="message-user">{errors.username?.message}</p> 
             <div className="div-inputs">
               <input
                 type="password"
@@ -104,9 +104,9 @@ const Login = () => {
                 )}
               />
             </div>
-            <p className="menssage-user">{errors.password?.message}</p>
+            <p className="message-user">{errors.password?.message}</p>
             <button  className="div-button">Ingresar</button>
-            {success && <p className="menssage-user">{success}</p>} 
+            {success && <p className="message-user">{success}</p>} 
           </form>     
         </section>
       </Layout>
