@@ -1,0 +1,13 @@
+.home-section-intro{
+  text-align: center;
+}
+
+.home-section-caracteristicas{
+  background-color: violet;
+  text-align: center;
+}
+
+.home-section-caracteristicas ul li{
+  display: inline-block;
+  list-style-type:none;
+}

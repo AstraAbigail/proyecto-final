@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react"
 import { Layout } from "../components/Layout"
 import { userAuth } from "../context/UserContext"
+import "../styles/views/Home.css"
+import { FaTruck } from "react-icons/fa";
+import logoCamion from "../assets/truck.png"
+import logoUser from "../assets/user.png"
+import logoPrice from "../assets/price.png"
+
+
 
 const Home = () => {
   //[]->vacio por el map para que no tire error de que no puede leer undefined y no se va a leer en el map.
@@ -96,30 +103,34 @@ const Home = () => {
 
   return (
     <Layout>
-      <section>
-        <h1>Bienvenido a Nuestra Tienda</h1>
+      <section className="home-section-intro">
+        <h1>Tienda Sadartsa</h1>
         <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
       </section>
 
-      <section>
+      <section className="home-section-caracteristicas">
         <h2>¿Por qué elegirnos?</h2>
         <ul>
           <li>
+            <img src={ logoCamion} alt="camion de envios" width={100}/>
             <h3>Envíos a todo el país</h3>
             <p>Recibí tu compra en la puerta de tu casa estés donde estés.</p>
           </li>
-          <li>
+          <li>    
+            <img src={logoPrice } alt="circulo con signo de pesos" width={100}/>
             <h3>Pagos seguros</h3>
             <p>Trabajamos con plataformas que garantizan tu seguridad.</p>
           </li>
-          <li>
+          
+          <li>  
+            <img src={ logoUser} alt="circulo con una palma mirando arriba y un usuario" width={100} />
             <h3>Atención personalizada</h3>
             <p>Estamos disponibles para ayudarte en todo momento.</p>
           </li>
         </ul>
       </section>
 
-      <section>
+      <section className="home-section-product">
         <h2>Nuestros productos</h2>
         <p>Elegí entre nuestras categorías más populares.</p>
 
@@ -161,11 +172,6 @@ const Home = () => {
             </form>
           </section>
         }
-
-
-
-
-
         <div>
           {
             products.map((product) =>
