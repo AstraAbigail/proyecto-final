@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { Layout } from "../components/Layout"
 import { useForm } from "react-hook-form"
+import "../styles/Fonts.css"
+import "../styles/Forms.css"
+import "../styles/views/Dashboard.css"
 
 
 const Dashboard = () => {
@@ -65,87 +68,89 @@ const Dashboard = () => {
   return (
     <Layout>
       <h1>Panel de Administración</h1>
-      <section>        
-        <form onSubmit={handleSubmit(isSubmit)}>   
-          <h3>Cargar nuevo producto</h3>
+      <section className="section-form-dashboard"> 
+        <h3>Cargar nuevo producto</h3>
+        <form className="form-dashboard" onSubmit={handleSubmit(isSubmit)}>   
           <div>
-            <input
-              type="text"
-              placeholder="Nombre del producto"
-              {...register("title",
-                {
-                  required:
+            <div>
+              <input
+                type="text"
+                placeholder="Categoria"
+                {...register("category",
                   {
-                    value: true,
-                    message: "Este campo es obligatorio",
-                  },
-                  minLength:
-                  {
-                    value: 3,
-                    message: "Mínimo de 3 carácteres",
+                    required:
+                    {
+                      value: true,
+                      message: "Este campo es obligatorio",
+                    },
+                    maxLength: {
+                      value: 25,
+                      message:"Maximo 25 carácteres"
+                    }
                   }
-                }
-              )}
-            />
-          </div>
-          <p className="message-user">{errors.title?.message}</p>
-          <div>
-            <input
-              type="number"
-              placeholder="Precio"
-              {...register("price",
-                {
-                  required:
+                )}
+              />
+            </div>
+            <p className="message-user">{errors.category?.message}</p>
+            <div>
+              <input
+                type="text"
+                placeholder="Nombre"
+                {...register("title",
                   {
-                    value: true,
-                    message: "Este campo es obligatorio",
-                  }                 
-                }
-              )}
-            />
-          </div>
-          <p className="message-user">{errors.price?.message}</p>       
-          <div>
-            <textarea
-              type="text"
-              placeholder="Descripcion"
-              rows="4"
-              {...register("description",
-                {
-                  required:
-                  {
-                    value: true,
-                    message: "Este campo es obligatorio",
-                  },
-                  maxLength: {
-                    value: 25,
-                    message:"Maximo 25 carácteres"
+                    required:
+                    {
+                      value: true,
+                      message: "Este campo es obligatorio",
+                    },
+                    minLength:
+                    {
+                      value: 3,
+                      message: "Mínimo de 3 carácteres",
+                    }
                   }
-                }
-              )}
-            />
-          </div>
-          <p className="message-user">{errors.description?.message}</p>           
-          <div>
-            <input
-              type="text"
-              placeholder="Categoria"
-              {...register("category",
-                {
-                  required:
+                )}
+              />
+            </div>
+            <p className="message-user">{errors.title?.message}</p>
+            <div>
+              <input
+                type="number"
+                placeholder="Precio"
+                {...register("price",
                   {
-                    value: true,
-                    message: "Este campo es obligatorio",
-                  },
-                  maxLength: {
-                    value: 25,
-                    message:"Maximo 25 carácteres"
+                    required:
+                    {
+                      value: true,
+                      message: "Este campo es obligatorio",
+                    }                 
                   }
-                }
-              )}
-            />
-          </div>
-          <p className="message-user">{errors.category?.message}</p>     
+                )}
+              />
+            </div>
+            <p className="message-user">{errors.price?.message}</p>       
+            <div>
+              <textarea
+                type="text"
+                placeholder="Descripción"
+                rows="4"
+                {...register("description",
+                  {
+                    required:
+                    {
+                      value: true,
+                      message: "Este campo es obligatorio",
+                    },
+                    maxLength: {
+                      value: 25,
+                      message:"Maximo 25 carácteres"
+                    }
+                  }
+                )}
+              />
+            </div>
+            <p className="message-user">{errors.description?.message}</p>           
+          </div>     
           <div>
             <img src={fileUrl} width="150" alt="avatar" id="img" />
             <input
@@ -158,8 +163,8 @@ const Dashboard = () => {
               required
             />          
           </div>
-          <button className="div-button" >Guardar producto</button>
-        </form>       
+        </form>
+        <button className="div-button" >Guardar producto</button>
         {
           product && <div>           
             <h3>Producto Agregado</h3>

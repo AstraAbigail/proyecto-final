@@ -105,7 +105,7 @@ const Login = () => {
               />
             </div>
             <p className="message-user">{errors.password?.message}</p>
-            <button  className="div-button">Ingresar</button>
+            <button className="div-button">Ingresar</button>
             {success && <p className="message-user">{success}</p>} 
           </form>     
         </section>
