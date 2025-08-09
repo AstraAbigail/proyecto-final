@@ -63,9 +63,8 @@ const Dashboard = () => {
   return (
     <Layout>
       <h1>Panel de Administración</h1>
-
       <section>
-        <h2>Cargar nuevo producto</h2>
+        <h3>Cargar nuevo producto</h3>
         <form onSubmit={handleSubmit(isSubmit)}>         
           <div>
             <input
