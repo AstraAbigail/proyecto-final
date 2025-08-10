@@ -31,9 +31,9 @@ const Register = () => {
 
   const isSubmit = (data) => {
     
-    console.log(registerUser())
+    // console.log(registerUser())
     const isRegisterUser = registerUser()
-    console.log(isRegisterUser)
+    // console.log(isRegisterUser)
 
     //deberia en una situacion real consultar que el registro no exista ya en la base de datos 
   
@@ -45,11 +45,13 @@ const Register = () => {
     }
     console.log(newUser, ("<- Nuevo Usuario"))
     
-    if (isRegisterUser){
-      setSuccess("Usuario registrado con éxito")
-       //limpio los input, volviendolos a su valor por defecto.
-      reset()
-      navigate("/")       
+    if (!isRegisterUser){
+      setSuccess("Usuario registrado con éxito")     
+      setTimeout(() => {
+        reset()
+        //redirijo automaticamente al Home
+        navigate("/") 
+      }, 3000); 
     }   
   }
 

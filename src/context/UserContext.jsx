@@ -36,9 +36,9 @@ const UserProvider = (props) => {
   }
 
   const registerUser = () => {
-    console.log("antes del set User", {user})
+    // console.log("antes del set User", {user})
     setUser(true)
-    console.log("desde el RegisterUser", { user })
+    // console.log("desde el RegisterUser", { user })
     return
     
   }  

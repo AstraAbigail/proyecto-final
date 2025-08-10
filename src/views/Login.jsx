@@ -28,7 +28,7 @@ const Login = () => {
 
   const navigate = useNavigate()
   
-  console.log("LOGIN PRINCIPIO", { user })
+  // console.log("LOGIN PRINCIPIO", { user })
   
   const isSubmit = async (data) => {
     
@@ -46,9 +46,7 @@ const Login = () => {
         navigate("/") 
       }, 3000); 
       
-    }
-    
-    
+    } 
   
   }
 
