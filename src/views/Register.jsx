@@ -2,15 +2,21 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { Layout } from "../components/Layout"
-
+import { userAuth } from "../context/UserContext.jsx"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
+
+
   /*Estados*/
   /*const [user, setUser] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   */
+  
+  const { registerUser, user } = userAuth()
+
   const [success, setSuccess] = useState("")
   const {
     register,
@@ -19,76 +25,40 @@ const Register = () => {
     formState: { errors }
   } = useForm()
   
+  const navigate = useNavigate()
 
-  /*evento del form*/
-  /*
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setError("")
-    setSuccess("")
+  console.log("Register Principio", {user})
 
-    //Validacion de datos
-
-    if (!user || !email || !password) {
-      setError("Debes completar todos los campos")
-      return
-    }
-    //Guardo los datos
-    const newUser = {
-      username,
-      email,
-      password
-    }
-
-    console.log(newUser)
-    //Mensaje de exito
-    setSuccess("Usuario registrado con éxito")
-
-    //Limpio estados
-    setUser("")
-    setEmail("")
-    setPassword("")
-  }
-  */
-  //const isSubmit = (data) => console.log(data) video 
-  
   const isSubmit = (data) => {
-    //Limpio el mensaje de Exito
-    //setSuccess("")
+    
+    console.log(registerUser())
+    const isRegisterUser = registerUser()
+    console.log(isRegisterUser)
 
+    //deberia en una situacion real consultar que el registro no exista ya en la base de datos 
+  
     //Guardo los datos
     const newUser = {
-      username:data.username,
-      email:data.email,
-      password:data.password
+      username: data.username,
+      email: data.email,
+      password: data.password
     }
     console.log(newUser, ("<- Nuevo Usuario"))
-    //Mesnaje de exito
-    setSuccess("Usuario registrado con éxito")
-
-    //limpio los input, volviendolos a su valor por defecto.
-    reset()
-    //delay
-    /*setTimeout(() => {
-      setSuccess("")
-    }, 5000); // 5000 ms = 5 segundos
-    */    
+    
+    if (isRegisterUser){
+      setSuccess("Usuario registrado con éxito")
+       //limpio los input, volviendolos a su valor por defecto.
+      reset()
+      navigate("/")       
+    }   
   }
+
   return (
     <Layout>      
       <section className="section-form-layout">        
         <form  className="section-form"  onSubmit={handleSubmit(isSubmit)}>
           <h3>Registrarse</h3>
-          <div  className="div-inputs">
-            {/*
-            <input
-              type="text"
-              placeholder="Usuario"
-              onChange={(e) => setUser(e.target.value)}
-              value={user}
-              required
-            />
-            */}
+          <div  className="div-inputs">          
             <input
               type="text"
               placeholder="Usuario"
@@ -109,14 +79,7 @@ const Register = () => {
             />
           </div>
           <p className="message-user">{errors.username?.message}</p>
-          <div  className="div-inputs">
-            {/*<input
-              type="email"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              required
-            />*/}
+          <div  className="div-inputs">           
             <input
               type="email"
               placeholder= "Correo"
@@ -134,14 +97,7 @@ const Register = () => {
             />
           </div>
           <p className="message-user">{errors.email?.message}</p>
-          <div  className="div-inputs">
-            {/*<input
-              type="password"
-              placeholder="Contraseña"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              required
-            />*/}
+          <div  className="div-inputs">            
             <input
               type="password"
               placeholder="Contraseña"             
@@ -154,11 +110,7 @@ const Register = () => {
                    minLength: {
                       value: 6,
                       message:"Debe contener 6 caracteres minimo"
-                  } 
-                  // pattern: {
-                  //   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                  //   message: "Debe contener: 1 Carácter especial - Minúsculas - Números - 1 Mayúscula - 8 Carácteres",
-                  // }
+                  }                   
                 }
               )}
             />
@@ -166,14 +118,12 @@ const Register = () => {
           <p className="message-user">{errors.password?.message}</p>
           <button className="div-button">Ingresar</button>
         </form>
-        
-        {/*{error && <p style={{ color: "red" }}>{error}</p>}*/}
+      
         {success && <p className="message-user">{success}</p>}      
       </section>
-    </Layout>
-   
+    </Layout>   
   )
 
 }
 
-export {Register }
+export {Register}

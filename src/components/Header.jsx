@@ -35,7 +35,7 @@ const Header = () => {
                   user &&
                   <>           
                     <li className="nav-item active">
-                      <Link className="nav-link" to="/">Home<span class="sr-only"></span></Link>                 
+                      <Link className="nav-link" to="/">Home<span className="sr-only"></span></Link>                 
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link" to="/dashboard">Dashboard</Link>                  
@@ -51,7 +51,10 @@ const Header = () => {
                       </li>
                       <li className="nav-item">
                         <Link className="nav-link" to="/register">Registrarse</Link>
-                      </li>                    
+                      </li>    
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/nosotros">Nosotros</Link>
+                      </li>                  
                     </>
                 }              
               </ul>

@@ -9,13 +9,14 @@ const UserContext = createContext()
 //¿que van hacer? lo dice el values 
 
 const UserProvider = (props) => {
+
   const [user, setUser] = useState(null)
+
+  
   
   const login = async (username, password) => {
     
-    // console.log(username,password, "<- usuario y password en el login ")
-  
-      const response = await fetch("https://fakestoreapi.com/auth/login", {
+    const response = await fetch("https://fakestoreapi.com/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
@@ -34,12 +35,19 @@ const UserProvider = (props) => {
     return setUser(null)    
   }
 
+  const registerUser = () => {
+    console.log("antes del set User", {user})
+    setUser(true)
+    console.log("desde el RegisterUser", { user })
+    return
+    
+  }  
+
   //props.children es para englobar toda la app con este proveedor.
   
   return (
-    <UserContext.Provider value = {{ login, logout, user }}>
-        {props.children}
-      
+    <UserContext.Provider value = {{ login, logout, registerUser, user,}}>
+        {props.children}      
     </UserContext.Provider>
   )
 
@@ -47,5 +55,7 @@ const UserProvider = (props) => {
 
 //Custom Hook
 const userAuth = () => useContext(UserContext)
+
+
 
 export {UserProvider,userAuth }

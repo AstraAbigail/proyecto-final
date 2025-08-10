@@ -10,7 +10,7 @@ import "../styles/Forms.css"
 
 const Login = () => {
   
-  const { login } = userAuth()
+  const { login,user } = userAuth()
 
   const [success, setSuccess] = useState("")
   const {
@@ -27,6 +27,8 @@ const Login = () => {
   })
 
   const navigate = useNavigate()
+  
+  console.log("LOGIN PRINCIPIO", { user })
   
   const isSubmit = async (data) => {
     
