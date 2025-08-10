@@ -25,7 +25,7 @@ const Home = () => {
   const [categoryEdit, setCategoryEdit] = useState("")
   const [imageEdit, setImageEdit] = useState("")
 
-
+  console.log({user})
   const fetchingProducts = async () => {
     const response = await fetch("https://fakestoreapi.com/products", { method: "GET" })
     const data = await response.json()
@@ -109,7 +109,7 @@ const Home = () => {
         <h1>Tienda Sadartsa</h1>
         <p className="font">Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
       </section>
-
+      <hr />
       <section className="home-section-caracteristicas">
         <h2 className="font">¿Por qué elegirnos?</h2>
         <ul>
@@ -131,7 +131,7 @@ const Home = () => {
           </li>
         </ul>
       </section>
-
+      <hr />
       <section>
         <div className="home-section-product">
           <div className="hspdiv">
@@ -143,10 +143,14 @@ const Home = () => {
             </div>     
           </div>
           {
-            showPopUp && <section className="popup-edit">
-              <h2>Editando producto.</h2>
-              <button onClick={() => setShowPopUp(null)}>Cerrar</button>
-              <form onSubmit={handleUpdate}>
+            showPopUp &&
+            
+            <section className="popup-edit">
+              <div className="popup-edit-div">
+                <h2 className="popup-edit-h2">Editando producto.</h2>
+                  <button className="popup-edit-button" onClick={() => setShowPopUp(null)}>Cerrar</button>
+              </div>
+              <form className="popup-edit-form" onSubmit={handleUpdate}>
                 <input
                   type="text"
                   placeholder="Ingrese el titulo"
@@ -187,14 +191,21 @@ const Home = () => {
           { 
             products.map((product) =>
               <div className="single-product" key= {product.id}>
-                <h4 key={product.id}>{product.title}</h4>
-                <img width="80px" src={product.image} alt={`Imagen de ${product.title}`} />
-                <p>${product.price}</p>
-                <p>{product.description}</p>
-                <p><strong>{product.category}</strong></p>
+                <h4 id="single-product-h4" key={product.id}>{product.title}</h4>
+                <div className="single-product-img">
+                  <img  src={product.image} alt={`Imagen de ${product.title}`} width={100} height={100}/>
+                </div>
+                <div className="single-product-data">
+                  <p>$ <strong>{ product.price}</strong></p>
+                  <hr />
+                  <p id="single-product-description">{product.description} </p>
+                </div>
+                  <hr />
+                  <p>Categoría: <strong>{product.category}</strong></p>
+                
                 {
                   user &&
-                  <div>
+                  <div className="single-product-buttones">
                     <button onClick={()=>handleOpenEdit(product)}>Actualizar</button>
                     <button onClick={() => handleDelete(product.id)}>Borrar</button>
                   </div>

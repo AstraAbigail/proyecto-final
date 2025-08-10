@@ -4,10 +4,13 @@
   padding: 0px;
 }
 
-.home-section-intro{
+.home-section-intro{ 
+  text-align: center; 
+}
+.home-section-intro p{
   text-align: center;
 }
-
+/*  */
 .home-section-caracteristicas{
   margin-top: 50px;
   text-align: center;
@@ -27,13 +30,16 @@ h2{
 /*Sector productos*/
 .home-section-product{
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center;     
   padding: 10px;
+  
+  
 }
 
 .hspdiv h2, p{
-  align-items: center;
+  text-align: center;
 }
 .ui-search{
   display: flex;
@@ -52,28 +58,79 @@ h2{
 
 
 .conteiner-product{
-  background-color: aqua;
-  border-radius: 10px;  
-  border:2px solid rgb(0, 0, 0);
-  
-  display: grid;
+  /* border-radius: 10px;  
+  border:2px solid rgb(0, 0, 0);   */
+  display: grid;  
+  grid-template-columns: repeat(3,minmax(200px,1fr));
   max-width: 900px;
   justify-content: center;
-  grid-template-columns: repeat(3,minmax(200px,1fr));
-  
   gap:10px 20px;  
 }
 
 .single-product{
-  /* background-color: yellow; */
-  border:2px solid tomato;
+  /* background-color: yellow; */  
+  border:2px solid #999;
   border-radius: 6px;
   padding: 5px;
+  justify-content: center ;
+  align-items: center;
+ 
   
 }
 
-.conteiner-product div img{
-  width: 100px;
-  border-radius: 4px;
-  background-color: turquoise;
+.single-product-img{  
+  padding-bottom: 20px; 
+  overflow: hidden;
+  padding-top:10px;
+  padding-left: 80px;
 }
+
+#single-product-h4{
+  font-size:  15px;  
+  font-family: "Nata Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:200;
+  font-style: normal;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+
+.single-product-data{
+  /* background-color: rgb(162, 32, 177); */
+}
+
+#single-product-description{
+  font-size: 13px;
+  /*Limitar el texto de la descripcion*/
+  height: 200px;  
+  display:-webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;  
+
+  font-family: "Nata Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:200;
+  font-style: thin;  
+}
+
+.single-product-buttones button{
+  background-color:#999;
+  color:white;
+  padding: 5px;
+  width: 80px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+/*----------------------------------*/
+
+.popup-edit-div{
+  padding: 30px;
+  background-color: #999;
+}
+

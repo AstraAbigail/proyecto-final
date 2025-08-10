@@ -10,7 +10,7 @@ import "../styles/Forms.css"
 
 const Login = () => {
   
-  const { login,user } = userAuth()
+  const { login, user } = userAuth()
 
   const [success, setSuccess] = useState("")
   const {
