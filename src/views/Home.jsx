@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Layout } from "../components/Layout"
 import { userAuth } from "../context/UserContext"
 import "../styles/views/Home.css"
-import { FaTruck } from "react-icons/fa";
+import { TfiSearch } from "react-icons/tfi";
 import logoCamion from "../assets/truck.png"
 import logoUser from "../assets/user.png"
 import logoPrice from "../assets/price.png"
@@ -107,7 +107,7 @@ const Home = () => {
     <Layout>
       <section className="home-section-intro">
         <h1>Tienda Sadartsa</h1>
-        <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
+        <p className="font">Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
       </section>
 
       <section className="home-section-caracteristicas">
@@ -132,53 +132,62 @@ const Home = () => {
         </ul>
       </section>
 
-      <section className="home-section-product">
-        <h2>Nuestros productos</h2>
-        <p>Elegí entre nuestras categorías más populares.</p>
-
-        {
-          showPopUp && <section className="popup-edit">
-            <h2>Editando producto.</h2>
-            <button onClick={() => setShowPopUp(null)}>Cerrar</button>
-            <form onSubmit={handleUpdate}>
-              <input
-                type="text"
-                placeholder="Ingrese el titulo"
-                value={titleEdit}
-                onChange={(e) => setTitleEdit(e.target.value)}
-              />
-              <input
-                type="number"
-                placeholder="Ingrese el precio"
-                value={priceEdit}
-                onChange={(e) => setPriceEdit(e.target.value)}
-              />
-              <textarea
-                placeholder="Ingrese la descripción"
-                value={descriptionEdit}
-                onChange={(e) => setDescriptionEdit(e.target.value)}
-              ></textarea>
-              <input
-                type="text"
-                placeholder="Ingrese la categoria"
-                value={categoryEdit}
-                onChange={(e) => setCategoryEdit(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Ingrese la URL de la imagen"
-                value={imageEdit}
-                onChange={(e) => setImageEdit(e.target.value)}
-              />
-              <button>Actualizar</button>
-            </form>
-          </section>
-        }
-        <div>
+      <section>
+        <div className="home-section-product">
+          <div className="hspdiv">
+            <h2>Nuestros productos</h2>
+            <p className="font">Elegí entre nuestras categorías más populares.</p>
+            <div className="ui-search">         
+              <input id="ui-search-input" type="text" placeholder="Buscar productos"  /> 
+              <TfiSearch size={25}/>          
+            </div>     
+          </div>
           {
+            showPopUp && <section className="popup-edit">
+              <h2>Editando producto.</h2>
+              <button onClick={() => setShowPopUp(null)}>Cerrar</button>
+              <form onSubmit={handleUpdate}>
+                <input
+                  type="text"
+                  placeholder="Ingrese el titulo"
+                  value={titleEdit}
+                  onChange={(e) => setTitleEdit(e.target.value)}
+                />
+                <input
+                  type="number"
+                  placeholder="Ingrese el precio"
+                  value={priceEdit}
+                  onChange={(e) => setPriceEdit(e.target.value)}
+                />
+                <textarea
+                  placeholder="Ingrese la descripción"
+                  value={descriptionEdit}
+                  onChange={(e) => setDescriptionEdit(e.target.value)}
+                ></textarea>
+                <input
+                  type="text"
+                  placeholder="Ingrese la categoria"
+                  value={categoryEdit}
+                  onChange={(e) => setCategoryEdit(e.target.value)}
+                />
+                <input
+                  type="text"
+                  placeholder="Ingrese la URL de la imagen"
+                  value={imageEdit}
+                  onChange={(e) => setImageEdit(e.target.value)}
+                />
+                <button>Actualizar</button>
+              </form>
+            </section>
+          }
+        </div>
+
+        
+        <div className="conteiner-product" >
+          { 
             products.map((product) =>
-              <div key={product.id}>
-                <h2 key={product.id}>{product.title}</h2>
+              <div className="single-product" key= {product.id}>
+                <h4 key={product.id}>{product.title}</h4>
                 <img width="80px" src={product.image} alt={`Imagen de ${product.title}`} />
                 <p>${product.price}</p>
                 <p>{product.description}</p>
