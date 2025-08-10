@@ -17,13 +17,40 @@ const Home = () => {
   // estado global -destructurando al user, podria usar login y logout que me lo da el objeto 
   const { user} = userAuth()  
   const [productToEdit, setProductToEdit] = useState(null)
-  const [showPopUp, setShowPopUp] = useState(null)
+  const [showPopUp, setShowPopup] = useState(null)
   //estados del formulario de actualizacion
   const [titleEdit, setTitleEdit] = useState("")
   const [priceEdit, setPriceEdit] = useState("")
   const [descriptionEdit, setDescriptionEdit] = useState("")
   const [categoryEdit, setCategoryEdit] = useState("")
   const [imageEdit, setImageEdit] = useState("")
+
+
+  /*FILTRADO*/
+  const [search, setSearch] = useState("")
+  
+  //metodo de filtrado
+
+  //metdo de busqueda
+  const searcher = (e) => { 
+    setSearch(e.target.value)
+    
+    console.log(search,"search")
+  }
+
+  //metodo de filtrado
+    let resultadoFiltrado = []
+  if (!search) {
+    console.log(products, "productos del search")
+    resultadoFiltrado = products
+  } else { 
+    resultadoFiltrado= products.filter((dato) =>
+    dato.title.toLowerCase().includes(search.toLocaleLowerCase()))
+  }
+      
+  //     array = search.filter((dato)=> dato.title.toLowerCase().includes(search.toLocaleLowerCase()))
+  //   }
+    
 
   console.log({user})
   const fetchingProducts = async () => {
@@ -51,7 +78,7 @@ const Home = () => {
 
 
   const handleOpenEdit = (product) => {
-    setShowPopUp(true)
+    setShowPopup(true)
     setProductToEdit(product)
     setTitleEdit(product.title)
     setPriceEdit(product.price)
@@ -62,22 +89,18 @@ const Home = () => {
   }
   // petición al backend mediante fetch para modificar-> método PATCH / PUT https://fakeproductapi.com/products
 
-  const handleUpdate = async () => { 
+  const handleUpdate = async (e) => {
     e.preventDefault()
-    
-    //producto actualializado
+
     const updatedProduct = {
       id: productToEdit.id,
       title: titleEdit,
-      price: Number(priceEdit), //debe ser numero parseint lo pasa a entero no a float (tambien podes hacer parseFloat)
+      price: Number(priceEdit),
       description: descriptionEdit,
       category: categoryEdit,
       image: imageEdit
     }
-    
 
-    //captura errores
-    //try ->intenta y el cat
     try {
       const response = await fetch(`https://fakestoreapi.com/products/${productToEdit.id}`, {
         method: "PUT",
@@ -91,17 +114,19 @@ const Home = () => {
         const data = await response.json()
         setProducts(prevProduct =>
           prevProduct.map((product) =>
-            product.id === productToEdit.id  //si el producto que itero es igual al que tengo 
-              ? data //entoces coloco la data
-              : product //si no coloco el producto 
+            product.id === productToEdit.id
+              ? data
+              : product
           ))
-        // fetchingProducts()  
+        // fetchingProducts()
       }
-      setShowPopUp(false)
+      setShowPopup(false)
     } catch (error) {
       console.log(error)
     }
   }
+
+
 
   return (
     <Layout>
@@ -138,14 +163,65 @@ const Home = () => {
             <h2>Nuestros productos</h2>
             <p className="font">Elegí entre nuestras categorías más populares.</p>
             <div className="ui-search">         
-              <input id="ui-search-input" type="text" placeholder="Buscar productos"  /> 
-              <TfiSearch size={25}/>          
+              <input value={search} onChange={searcher}id="ui-search-input" type="text" placeholder="Buscar productos" /> 
+                   
             </div>     
           </div>
+      
           {
-            showPopUp &&
-            
+            showPopUp &&                       
             <section className="popup-edit">
+                <hr />
+                <dialog className="dialog-popup" open>
+                  <h3>Editando producto</h3>
+                  <form onSubmit={handleUpdate}>
+                    <div>
+                      <label htmlFor="">Titulo</label>
+                      <input
+                        type="text"
+                        placeholder="Ingrese el titulo"
+                        value={titleEdit}
+                        onChange={(e) => setTitleEdit(e.target.value)}
+                      />
+                      <label htmlFor="">Precio</label>
+                      <input
+                        type="number"
+                        placeholder="Ingrese el precio"
+                        value={priceEdit}
+                        onChange={(e) => setPriceEdit(e.target.value)}
+                      />
+                    </div>
+                    <label htmlFor="">Descrioción</label>
+                    <textarea
+                      placeholder="Ingrese la descripción"
+                      value={descriptionEdit}
+                      onChange={(e) => setDescriptionEdit(e.target.value)}
+                    ></textarea>
+                    <div>
+                      <label htmlFor="">Categoría</label>
+                      <input
+                        type="text"
+                        placeholder="Ingrese la categoria"
+                        value={categoryEdit}
+                        onChange={(e) => setCategoryEdit(e.target.value)}
+                      />
+                      <label htmlFor="">Imagen</label>
+                      <input
+                        type="text"
+                        placeholder="Ingrese la URL de la imagen"
+                        value={imageEdit}
+                        onChange={(e) => setImageEdit(e.target.value)}
+                      />   
+                    </div>  
+                      
+                  </form>
+                  <div className="dialog-buttons">
+                    <button onClick={handleUpdate}>Actualizar</button>
+                    <button id="close" onClick={()=>setShowPopup(null)}>Cerrar</button>
+                  </div>
+                </dialog>
+                
+{/*                 
               <div className="popup-edit-div">
                 <h2 className="popup-edit-h2">Editando producto.</h2>
                   <button className="popup-edit-button" onClick={() => setShowPopUp(null)}>Cerrar</button>
@@ -182,6 +258,7 @@ const Home = () => {
                 />
                 <button>Actualizar</button>
               </form>
+              <br /> */}
             </section>
           }
         </div>
@@ -189,7 +266,8 @@ const Home = () => {
         
         <div className="conteiner-product" >
           { 
-            products.map((product) =>
+            // products.map((product) =>
+            resultadoFiltrado.map((product) =>
               <div className="single-product" key= {product.id}>
                 <h4 id="single-product-h4" key={product.id}>{product.title}</h4>
                 <div className="single-product-img">
