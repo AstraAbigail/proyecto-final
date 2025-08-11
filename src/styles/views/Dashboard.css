@@ -53,3 +53,29 @@ textarea{
   height: 100px;
   overflow:hidden;
 }
+
+
+
+@media (width <= 360px){
+  
+  
+}
+
+@media (370px < width <= 480px){
+  
+}
+/*TABLET*/
+
+
+@media (480px < width <= 768px){
+ 
+  
+  
+}
+
+
+@media (768px < width <= 1024px){
+  
+  
+  
+}
