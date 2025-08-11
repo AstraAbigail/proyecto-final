@@ -50,3 +50,5 @@ Ej: usuario: contraseña:
        Una vez terminada la instalacion, verificamos en una terminal si se instalo correctamente con los siguientes comandos:
        node -v (para saber la version que instalo - Preferentemente que sea LTS)
        1+1 y la terminal deberia darnos 2.
+- 5. Dato para verificar los formularios
+     donero -> ewedon
