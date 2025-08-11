@@ -47,3 +47,111 @@
   margin-bottom: 10px;
   padding: 5px;
 }
+
+ 
+/* Media querie para celulares */
+
+@media (width <= 360px){
+  .section-form-layout{
+    width: 90%;     
+  }
+  .section-form{
+  width: 200px;
+  /* arriba-derecha-abajo-izquierda */
+  padding: 10px 10px 10px 10px;  
+  border-radius: 15px;  
+  }
+  .section-form h3{  
+    margin-bottom: 20px;
+  }
+  .div-inputs{
+    padding-bottom: 5px;
+  }
+  .div-inputs input{  padding: 5px 0px 5px 5px;
+  }
+  .div-button{    
+    margin-bottom: 5px;
+    padding: 2px;
+    font-size: 15px;
+  }
+  
+}
+
+@media (370px < width <= 480px){
+  .section-form-layout{
+    width: 100%;  
+  }
+  .section-form{
+  width: 300px;
+  /* arriba-derecha-abajo-izquierda */
+  padding: 20px 20px 40px 20px;  
+  border-radius: 15px;  
+  }
+  .section-form h3{  
+    margin-bottom: 20px;
+  }
+  .div-inputs{
+    padding-bottom: 10px;
+  }
+  .div-inputs input{ 
+     padding: 5px 0px 5px 5px;
+  }
+  .div-button{       
+    margin-bottom: 5px;
+    padding: 2px;
+    font-size: 25px;
+  }
+}
+/*TABLET*/
+
+
+@media (480px < width <= 768px){
+ 
+  .section-form{
+  width: 300px;
+  /* arriba-derecha-abajo-izquierda */
+  padding: 10px 10px 10px 10px;  
+  border-radius: 15px;  
+  }
+  .section-form h3{  
+    margin-bottom: 20px;
+  }
+  .div-inputs{
+    padding-bottom: 5px;
+  }
+  .div-inputs input{ 
+     padding: 5px 0px 5px 5px;
+  }
+  .div-button{    
+    margin-bottom: 5px;
+    padding: 2px;
+    font-size: 15px;
+  }
+  
+}
+
+
+@media (768px < width <= 1024px){
+  
+  .section-form{
+  width: 300px;
+  /* arriba-derecha-abajo-izquierda */
+  padding: 10px 10px 10px 10px;  
+  border-radius: 15px;  
+  }
+  .section-form h3{  
+    margin-bottom: 40px;
+  }
+  .div-inputs{
+    padding-bottom: 5px;
+  }
+  .div-inputs input{ 
+     padding: 5px 0px 5px 5px;
+  }
+  .div-button{    
+    margin-bottom: 20px;
+    padding: 2px;
+    font-size: 20px;
+  }
+  
+}
