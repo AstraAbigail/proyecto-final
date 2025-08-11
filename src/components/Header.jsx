@@ -24,18 +24,19 @@ const Header = () => {
 
     <header>
       <img src={logo} alt="logo de Sadartsa" />
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                 
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          {/* <a class="navbar-brand" href="#">Navbar</a> */}
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
           </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
                 {
                   user &&
                   <>           
-                    <li className="nav-item active">
-                      <Link className="nav-link" to="/">Home<span className="sr-only"></span></Link>                 
+                    <li className="nav-item">
+                      <Link className="nav-link active"  aria-current="page" to="/">Home</Link>                 
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link" to="/dashboard">Dashboard</Link>                  
@@ -59,29 +60,17 @@ const Header = () => {
                         <Link className="nav-link" to="/nosotros">Nosotros</Link>
                       </li>                  
                     </>
-                }              
-              </ul>
-            </div>
-      </nav>
-          {/* <nav>
-            <ul>
-              { 
-                user &&
-                <>
-                  <li><Link to="/">Home</Link></li>
-                  <li><Link to="/dashboard">Dashboard</Link></li>
-                  <button onClick={handleLogout}>Cerrar sesión</button>
-                </>
-            }
-            {
-              !user &&
-              <>
-                <li><Link to="/login">Login</Link></li>
-                <li><Link to="/register">Registrarse</Link></li>
-              </>
-            }
+                }  
+               
             </ul>
-          </nav> */}
+          </div>
+        </div>
+      </nav>
+
+        
+        
+        
+      
     </header>
    
 
