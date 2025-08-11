@@ -40,6 +40,9 @@ const Header = () => {
                     <li className="nav-item">
                       <Link className="nav-link" to="/dashboard">Dashboard</Link>                  
                     </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/nosotros">Nosotros</Link>
+                    </li>  
                     <button className="nav-link" onClick={handleLogout}>Cerrar sesión</button>              
                   </>
                 }

@@ -47,12 +47,9 @@ const Home = () => {
     resultadoFiltrado= products.filter((dato) =>
     dato.title.toLowerCase().includes(search.toLocaleLowerCase()))
   }
-      
-  //     array = search.filter((dato)=> dato.title.toLowerCase().includes(search.toLocaleLowerCase()))
-  //   }
-    
+       
 
-  console.log({user})
+
   const fetchingProducts = async () => {
     const response = await fetch("https://fakestoreapi.com/products", { method: "GET" })
     const data = await response.json()
